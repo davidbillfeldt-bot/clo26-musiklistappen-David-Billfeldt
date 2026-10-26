@@ -11,7 +11,37 @@ var connectionString = config.GetConnectionString("Default")
     ?? throw new InvalidOperationException("Hittar ingen connection string 'Default' i appsettings.json.");
 
 // Börja här. Den här raden visar att inställningarna lästes in, ta bort den när du vill.
-Console.WriteLine($"Musiklistappen: börja med att få menyn att fungera!  (databas: {connectionString})");
+while (true)
+{
+    Console.WriteLine();
+    Console.WriteLine("=== Greta Van Fleet ===");
+    Console.WriteLine("1. Visa alla låtar");
+    Console.WriteLine("2. Sök låt");
+    Console.WriteLine("3. Visa detaljer");
+    Console.WriteLine("4. Avsluta");
+    Console.Write("Välj: ");
+
+    string? val = Console.ReadLine();
+
+    switch (val)
+    {
+        case "1":
+            Console.WriteLine("Här kommer en lista senare");
+            break;
+        case "2":
+            Console.WriteLine("Sök ej tillagt än");
+            break;
+        case "3":
+            Console.WriteLine("Visa detaljer ej tillagt än");
+            break;
+        case "4":
+            Console.WriteLine("Avsluta program");
+            return;
+        default:
+            Console.WriteLine("Ogiltigt val");
+            break;
+    }
+}
 
 // Tips på ordning (se UPPGIFT.md):
 //   1. Rita upp huvudmenyn (alternativ numrerade 1-N) och läs in ett val med Console.ReadLine().
