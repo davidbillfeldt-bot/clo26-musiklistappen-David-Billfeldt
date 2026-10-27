@@ -34,8 +34,20 @@ while (true)
             }
             
             break;
+        
         case "2":
-            Console.WriteLine("Sök ej tillagt än");
+            Console.Write("Sök efter: ");
+            string sokord = Console.ReadLine() ?? "";
+
+            var hits = db.SearchSongs(sokord);
+            if (hits.Count == 0)
+            {
+                Console.WriteLine("Inga låtar hittades");
+            }
+            foreach (var song in hits)
+            {
+                Console.WriteLine($"{song.Id}. {song.Title} ({song.DurationSeconds} sek)");
+            }
             break;
         case "3":
             Console.WriteLine("Visa detaljer ej tillagt än");

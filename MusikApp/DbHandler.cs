@@ -59,7 +59,24 @@ public class DbHandler
         using var connection = new SqliteConnection(_connectionString);
         connection.Open();
         using var command = connection.CreateCommand();
-        throw new NotImplementedException();   // tillfälligt, tills metoden är klar
+        command.CommandText =
+            "SELECT id, title, duration_seconds, track_number, album_id FROM songs WHERE title LIKE @sok ORDER BY title";
+        command.Parameters.AddWithValue("@sok", "%" + searchText + "%");
+        var songs = new List<Song>();
+        using var reader = command.ExecuteReader();
+        while (reader.Read())
+        {
+            var song = new Song
+            {
+                Id = reader.GetInt32(0),
+                Title = reader.GetString(1),
+                DurationSeconds = reader.GetInt32(2),
+                TrackNumber = reader.GetInt32(3),
+                AlbumId = reader.GetInt32(4)   // ← samma stavning som i Song.cs
+            };
+            songs.Add(song);
+        }
+        return songs;
     }
 
     // Menyval 3: Visa detaljer
