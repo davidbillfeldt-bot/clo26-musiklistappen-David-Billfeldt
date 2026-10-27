@@ -24,7 +24,7 @@ Alternativt: öppna `MusikApp.slnx` i Rider eller Visual Studio och tryck ▶ Ru
 
 [![Huvudmenyn](Huvudmeny.png)]
 
----
+--- Går ej för VG denna uppgift!
 
 ## Mina designval (VG)
 
