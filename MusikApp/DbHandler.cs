@@ -30,7 +30,11 @@ public class DbHandler
     // Menyval 1: Visa alla låtar
     public List<Song> GetAllSongs()
     {
-        throw new NotImplementedException();
+       using var connection = new SqliteConnection(_connectionString);
+       connection.Open();
+       using var command = connection.CreateCommand();
+       command.CommandText = "SELECT id, title, duration_seconds, track_number, album_id FROM songs ORDER BY title";
+       using var reader = command.ExecuteReader();
     }
 
     // Menyval 2: Sök låt
