@@ -22,7 +22,7 @@ Alternativt: öppna `MusikApp.slnx` i Rider eller Visual Studio och tryck ▶ Ru
 
 ## Så ser huvudmenyn ut
 
-[![Huvudmenyn](huvudmeny.png)]
+[![Huvudmenyn](Huvudmeny.png)]
 
 ---
 
