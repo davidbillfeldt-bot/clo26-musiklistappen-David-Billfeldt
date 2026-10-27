@@ -38,7 +38,7 @@ while (true)
             Console.WriteLine("Avsluta program");
             return;
         default:
-            Console.WriteLine("Ogiltigt val");
+            Console.WriteLine("Ogiltigt val, välj 1-4");
             break;
     }
 }
