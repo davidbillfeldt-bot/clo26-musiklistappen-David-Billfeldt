@@ -1,4 +1,4 @@
-# Musiklistappen — [Ditt namn]
+# Musiklistappen — [David Billfeldt]
 
 > **Instruktion till dig:** den här filen är *din* README. Ersätt all text i hakparenteser med din egen, och ta bort den här rutan när du är klar. Uppgiften och kraven står i [`UPPGIFT.md`](UPPGIFT.md), och inlämningen beskrivs i [`INLAMNING.md`](INLAMNING.md).
 
@@ -6,21 +6,23 @@
 
 ## Vad appen gör
 
-[Skriv här: två till tre meningar om din app. Vilken artist handlar den om och vad kan man göra i menyn?]
+[Min app handlar om mitt favorit band Greta Van Fleet. Appen kan visa alla låtar som databasen har, man kan söka efter en spcifik låt. Man kan få upp all tillgänglig information om specifika låtar.]
 
 ## Så kör du den
 
 ```bash
-git clone [länk till din fork]
-cd [mappens namn]/MusikApp
+git clone [https://github.com/davidbillfeldt-bot/clo26-musiklistappen-David-Billfeldt.git]
+cd C:\Users\david\RiderProjects\clo26-musiklistappen-David-Billfeldt\MusikApp
 dotnet run
 ```
 
-[Skriv här om något behöver göras först, t.ex. att `musik.db` ska ligga i mappen `MusikApp/`.]
+[Databasen `musik.db` ligger redan i mappen `MusikApp/` och följer med i repot, så inget extra behöver göras. Kräver .NET 10 SDK.
+
+Alternativt: öppna `MusikApp.slnx` i Rider eller Visual Studio och tryck ▶ Run.]
 
 ## Så ser huvudmenyn ut
 
-[Lägg in en screenshot här. Spara bilden i repot och länka den: `![Huvudmenyn](bild.png)`]
+[![Huvudmenyn](huvudmeny.png)]
 
 ---
 
