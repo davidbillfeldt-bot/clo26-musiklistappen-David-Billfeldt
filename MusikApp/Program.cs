@@ -1,5 +1,5 @@
 using Microsoft.Extensions.Configuration;
-
+using MusikApp;
 // Läser inställningar från appsettings.json (samma sätt som i hero_databas).
 // Databasens sökväg ligger där, så du slipper skriva den i koden.
 var config = new ConfigurationBuilder()
@@ -10,7 +10,8 @@ var config = new ConfigurationBuilder()
 var connectionString = config.GetConnectionString("Default")
     ?? throw new InvalidOperationException("Hittar ingen connection string 'Default' i appsettings.json.");
 
-// Börja här. Den här raden visar att inställningarna lästes in, ta bort den när du vill.
+var db = new DbHandler(connectionString);
+
 while (true)
 {
     Console.WriteLine();
@@ -26,7 +27,12 @@ while (true)
     switch (val)
     {
         case "1":
-            Console.WriteLine("Här kommer en lista senare");
+            var allSongs = db.GetAllSongs();
+            foreach (var song in allSongs)
+            {
+             Console.WriteLine($"{song.Id}. {song.Title} ({song.DurationSeconds} sek");
+            }
+            
             break;
         case "2":
             Console.WriteLine("Sök ej tillagt än");
