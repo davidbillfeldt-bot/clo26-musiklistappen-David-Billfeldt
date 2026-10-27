@@ -34,18 +34,37 @@ public class DbHandler
        connection.Open();
        using var command = connection.CreateCommand();
        command.CommandText = "SELECT id, title, duration_seconds, track_number, album_id FROM songs ORDER BY title";
+       var songs = new List<Song>(); 
+
        using var reader = command.ExecuteReader();
+       while (reader.Read())
+       {
+           var song = new Song
+           {
+               Id = reader.GetInt32(0),           
+               Title = reader.GetString(1),      
+               DurationSeconds = reader.GetInt32(2),
+               TrackNumber = reader.GetInt32(3),
+               AlbumId = reader.GetInt32(4)
+           };
+           songs.Add(song);
+       }
+
+       return songs;
     }
 
     // Menyval 2: Sök låt
     public List<Song> SearchSongs(string searchText)
     {
-        throw new NotImplementedException();
+        using var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+        using var command = connection.CreateCommand();
+        throw new NotImplementedException();   // tillfälligt, tills metoden är klar
     }
 
     // Menyval 3: Visa detaljer
     public Song? GetSongById(int id)
     {
-        throw new NotImplementedException();
+        throw new NotImplementedException();   // tillfälligt, tills metoden är klar
     }
 }
