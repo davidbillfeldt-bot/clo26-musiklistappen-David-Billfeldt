@@ -82,6 +82,24 @@ public class DbHandler
     // Menyval 3: Visa detaljer
     public Song? GetSongById(int id)
     {
-        throw new NotImplementedException();   // tillfälligt, tills metoden är klar
+        using var connection = new SqliteConnection(_connectionString);
+        connection.Open();
+        using var command = connection.CreateCommand();
+        command.CommandText = "SELECT id, title, duration_seconds, track_number, album_id FROM songs WHERE id = @id";
+        command.Parameters.AddWithValue("@id", id);
+
+        using var reader = command.ExecuteReader();
+        if (reader.Read())
+        {
+            return new Song
+            {
+                Id = reader.GetInt32(0),
+                Title = reader.GetString(1),
+                DurationSeconds = reader.GetInt32(2),
+                TrackNumber = reader.GetInt32(3),
+                AlbumId = reader.GetInt32(4)   // ← samma stavning som i Song.cs
+            };
+        }
+        return null;
     }
 }

@@ -50,7 +50,25 @@ while (true)
             }
             break;
         case "3":
-            Console.WriteLine("Visa detaljer ej tillagt än");
+            Console.Write("Ange låtens id: ");
+            if (!int.TryParse(Console.ReadLine(), out int id))
+            {
+                Console.WriteLine("Du måste skriva ett nummer");
+                break;
+            }
+
+            var found = db.GetSongById(id);
+            if (found == null)
+            {
+                Console.WriteLine("Ingen låt med det id:t hittades");
+            }
+            else
+            {
+                Console.WriteLine($"Titel:      {found.Title}");
+                Console.WriteLine($"Längd:      {found.DurationSeconds} sek");
+                Console.WriteLine($"Spår nr:    {found.TrackNumber}");
+                Console.WriteLine($"Album-id:   {found.AlbumId}");
+            }
             break;
         case "4":
             Console.WriteLine("Avsluta program");
